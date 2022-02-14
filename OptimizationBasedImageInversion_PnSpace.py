@@ -69,19 +69,6 @@ def build_PCA_model(PCA_path):
     np.savez(PCA_path, X_mean=X_mean, X_comp=X_comp, X_stdev=X_stdev, X_var_ratio=X_var_ratio)
 
 
-def load_PCA_model(PCA_path):
-    device = self.opts.device
-
-    # PCA_path = self.opts.ckpt[:-3] + '_PCA.npz'
-
-    # if not os.path.isfile(PCA_path):
-    #     self.build_PCA_model(PCA_path)
-
-    # PCA_model = np.load(PCA_path)
-    # self.X_mean = torch.from_numpy(PCA_model['X_mean']).float().to(device)
-    # self.X_comp = torch.from_numpy(PCA_model['X_comp']).float().to(device)
-    # self.X_stdev = torch.from_numpy(PCA_model['X_stdev']).float().to(device)
-
 
 
 def plotDistributions(axis = [0, 1], space = "Z"):
@@ -120,6 +107,21 @@ def plotDistributions(axis = [0, 1], space = "Z"):
             plt.show()
             return
 
+
+def Mah_distance(tensor):
+    '''
+    Accepts tensor of size (batch, 512)
+    '''
+
+
+
+
+def cal_p_norm_loss(w):
+
+    pn = (torch.nn.LeakyReLU(negative_slope=5)(w) - X_mean)
+    pn = pn.bmm(X_comp.T.unsqueeze(0)) / X_stdev
+
+    return pn.pow(2).mean()
 
 
 
@@ -184,95 +186,91 @@ if __name__ == "__main__":
     else:
         mean_latent = None
 
+    #Generate Target or Load from Image
+    with torch.no_grad():
+        g_ema.eval()
+        sample_z = torch.from_numpy(np.random.RandomState(44).randn(1, 512)).to(device)
+        print(sample_z[0][0])
+        sample_z = sample_z.float()
+        GroundTruth, _ = g_ema([sample_z], truncation_latent=None)
 
 
-
+    #Set up your PCA Matrices
     pca_path = "PCA_Matrices.npz"
-
     build_PCA_model(pca_path)
-
-
-
-
-
     PCA_model = np.load(pca_path)
     X_mean = torch.from_numpy(PCA_model['X_mean']).float().to(device) # Size: (512)
     X_comp = torch.from_numpy(PCA_model['X_comp']).float().to(device) #Size: (512, 512)
     X_stdev = torch.from_numpy(PCA_model['X_stdev']).float().to(device) #Size: (512)
 
 
-    z = torch.randn((1000, 512)).unsqueeze(0).to(device)
-    w = g_ema.style(z)
 
-    pn = (torch.nn.LeakyReLU(negative_slope=5)(w) - X_mean)
+    #This is the Z that we are trying to learn
+    learnedZ = torch.randn(args.sample, args.latent, device=device)
 
-    print(pn.size())
-    pn = pn.bmm(X_comp.T.unsqueeze(0)) / X_stdev
+    #Require Gradients
+    learnedZ.requires_grad = True
+
+    #Define optimizer
+    optimizer = optim.Adam([learnedZ], lr=0.1)
+
+    #Define your LPIPS loss term
+    loss_LPIPS = lpips.PerceptualLoss(
+        model="net-lin", net="vgg", use_gpu=device.startswith("cuda")
+    )
 
 
-#
-#     #Generate Target or Load from Image
-#     with torch.no_grad():
-#         g_ema.eval()
-#         sample_z = torch.from_numpy(np.random.RandomState(44).randn(1, 512)).to(device)
-#         print(sample_z[0][0])
-#         sample_z = sample_z.float()
-#         GroundTruth, _ = g_ema([sample_z], truncation_latent=None)
-#
-#
-#
-#     # ShowImageAtRunTime(GroundTruth)
-#
-#     #This is the Z that we are trying to learn
-#     learnedZ = torch.randn(args.sample, args.latent, device=device)
-#
-#     #Require Gradients
-#     learnedZ.requires_grad = True
-#
-#     #Define optimizer
-#     optimizer = optim.Adam([learnedZ], lr=0.1)
-#
-#     #Define your loss
-#     criterion = lpips.PerceptualLoss(
-#         model="net-lin", net="vgg", use_gpu=device.startswith("cuda")
-#     )
-#
-#
-#     for i in range(2000):
-#         optimizer.zero_grad()
-#
-#         y, _ = g_ema([learnedZ], truncation_latent=None)
-#         loss = criterion(y, GroundTruth).sum()
-#
-#
-#         loss.backward()
-#         optimizer.step()
-#
-#
-#         print(f'i = {i} -- loss = {loss.item()}')
-#
-#
-#
-#         #This controls the learning rate
-#         if i % 1000 == 0 and i != 0:
-#             optimizer.param_groups[0]["lr"] *= 0.5
-#
-#
-#
-#         #If you dont want to view images as the loop runs, comment this block
-#         ShowImageUsingOpenCV(y, 0.01)
-#         if cv2.waitKey(1) == ord('q'):
-#                 break
-#
-#
-#         #Save the images!
-#         if i % 50 == 0 and i != 0:
-#             Save_path = f'learningZSpace/{i}.png'
-#             SaveImageFromTensor(y, Save_path)
-#             print("Saved Successfuly at ", Save_path)
-#
-#
-#
-#
-# #Make sure to destroy all windows to avoid laggy feeling.
-# cv2.destroyAllWindows()
+    lambda1, lambda2 = 1, 0.0001
+
+
+
+    for i in range(2000):
+        optimizer.zero_grad()
+
+
+        y, _ = g_ema([learnedZ], truncation_latent=None, input_is_latent=False)
+
+
+        #Set up the PN loss
+        w = g_ema.style(learnedZ)
+        pn = (torch.nn.LeakyReLU(negative_slope=5)(w) - X_mean)
+        pn = (pn @ X_comp.T )/ X_stdev
+
+
+        pn_loss = (pn.squeeze(0))[:-1].pow(2).sum()
+        lpips_loss = loss_LPIPS(y, GroundTruth).sum()
+
+        loss = lambda1 * lpips_loss  + lambda2 * pn_loss
+
+
+        loss.backward()
+        optimizer.step()
+
+
+        print(f'i = {i} -- loss = {loss.item()} -- lpips = {lambda1 * lpips_loss.item()} -- pn = {lambda2 * pn_loss.item()}')
+
+
+
+        #This controls the learning rate
+        if i % 1000 == 0 and i != 0:
+            optimizer.param_groups[0]["lr"] *= 0.5
+
+
+
+        #If you dont want to view images as the loop runs, comment this block
+        ShowImageUsingOpenCV(y, 0.01)
+        if cv2.waitKey(1) == ord('q'):
+                break
+
+
+        #Save the images!
+        if i % 50 == 0 and i != 0:
+            Save_path = f'learningZSpace/{i}.png'
+            SaveImageFromTensor(y, Save_path)
+            print("Saved Successfuly at ", Save_path)
+
+
+
+
+#Make sure to destroy all windows to avoid laggy feeling.
+cv2.destroyAllWindows()
