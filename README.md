@@ -7,7 +7,7 @@
 
 
 <p float="left">
-  <img src="/ZSpace.png" width="100" />
-  <img src="/WSpace.png" width="100" /> 
-  <img src="/PSpace.png" width="100" />
+  <img src="/Images/ZSpace.png" width="250" />
+  <img src="/Images/WSpace.png" width="250" /> 
+  <img src="/Images/PSpace.png" width="250" />
 </p>
