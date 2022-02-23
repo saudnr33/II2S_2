@@ -8,16 +8,16 @@
 How do random samples map from the Z space to the W and P spaces? 
 
 <p float="left">
-  <img src="/Images/ZSpace.png" width="240" />
-  <img src="/Images/WSpace.png" width="240" /> 
-  <img src="/Images/PSpace.png" width="240" />
+  <img src="/Images/ZSpace.png" width="300" />
+  <img src="/Images/WSpace.png" width="300" /> 
+  <img src="/Images/PSpace.png" width="300" />
 </p>
 
 ---
 
 <p float="left">
-  <img src="/Images/00.png" width="240" />
-  <img src="/Images/lambda0001.png" width="240" /> 
+  <img src="/Images/00.png" width="300" />
+  <img src="/Images/lambda0001.png" width="300" /> 
 </p>
 
 ---
