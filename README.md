@@ -21,8 +21,47 @@ How do random samples map from the Z space to the W and P spaces?
 </p>
 
 ---
-Inverting a random image into the P_n space through optimization, using the LPIPS loss and the P_n loss. 
+Inverting a random image into the different spaces through optimization, using the LPIPS loss!
+
+*Z Space*
 <p float="left">
   <img src="/Images/conv.gif" width="240" />
   <img src="/Images/000000.png" width="240" /> 
 </p>
+
+*W Sapce*
+<p float="left">
+  <img src="/Images/WSpace.gif" width="240" />
+  <img src="/Images/000000.png" width="240" /> 
+</p>
+
+*W+ Space*
+<p float="left">
+  <img src="/Images/WPlusSpace.gif" width="240" />
+  <img src="/Images/000000.png" width="240" /> 
+</p>
+
+---
+
+*Pn Space*
+Inverting a random image using the LPIPS loss and Pn Loss!
+
+*lambda = 0.01*
+
+
+<p float="left">
+  <img src="/Images/Pn_01.gif" width="240" />
+  <img src="/Images/000000.png" width="240" /> 
+</p>
+
+*lambda = 0.001*
+
+
+<p float="left">
+  <img src="/Images/Pn_001.gif" width="240" />
+  <img src="/Images/000000.png" width="240" /> 
+</p>
+
+
+
+
