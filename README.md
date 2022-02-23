@@ -73,7 +73,8 @@ Inverting a random image using the LPIPS loss and Pn Loss!
 ### Idea behind PTI
 1. Use direct optimization to invert the image and obtain the pivotal latent code
 2. Tune the generator to generate the input image given the latent code in the previous step
-They also use locality regularization to make the tuning effects localized and keep the StyleGAN latent space semantically editable. 
+
+* They also use locality regularization to make the tuning effects localized and keep the StyleGAN latent space semantically editable. 
 ---
 ### What can we try?
 
