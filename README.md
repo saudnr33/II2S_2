@@ -112,7 +112,7 @@ lambda = 0. Images below show Ground Truth, Reconstructed Image, Expressin Chang
 lambda = 0.001 and increases by a factor of 1.15 every 100 iteration.
 Number of components is set to 128 instead of 512. 
 Every other hyperparamter should follow II2S implementation.
-Images below show Ground Truth, Reconstructed Image, Expressin Change, and Age Change (Respectively).
+Images below show Ground Truth, Reconstructed Image, Expression Change, and Age Change (Respectively).
 
 <p float="left">
   <img src="/Images/lambda0/000526.png" width="240" />
@@ -144,7 +144,7 @@ Images below show Ground Truth, Reconstructed Image, Expressin Change, and Age C
 lambda = 0.001 and increases by a factor of 1.15 every 100 iteration.
 Number of components is set to 128 instead of 512. 
 Every other hyperparamter should follow II2S implementation.
-Images below show Ground Truth, Reconstructed Image, Expressin Change, and Age Change (Respectively).
+Images below show Ground Truth, Reconstructed Image, Expression Change, and Age Change (Respectively).
 
 <p float="left">
   <img src="/Images/lambda0/000526.png" width="240" />
