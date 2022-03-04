@@ -81,17 +81,57 @@ Inverting a random image using the LPIPS loss and Pn Loss!
 ---
 
 
+ 
 <p float="left">
+  
+  <img src="/Images/lambda0/000526.png" alt="Nature" width="240" />
+  <img src="/Images/pn_0_1_reconstruct.png" width="240" />
   <img src="/Images/lambda0/pn_0_1.png" width="240" />
   <img src="/Images/lambda0/pn_0_11.png" width="240" />
 </p>
 
 <p float="left">
+  <img src="/Images/lambda0/000509.png" width="240" />
+  <img src="/Images/pn_0_2_reconstruct.png" width="240" />
+
   <img src="/Images/lambda0/pn_0_2.png" width="240" />
   <img src="/Images/lambda0/pn_0_22.png" width="240" />
 </p>
 
 <p float="left">
+  <img src="/Images/lambda0/000518.png" width="240" />
+  <img src="/Images/pn_0_3_reconstruct.png" width="240" />
+
   <img src="/Images/lambda0/pn_0_3.png" width="240" />
   <img src="/Images/lambda0/pn_0_33.png" width="240" />
 </p>
+
+---
+
+<p float="left">
+  <img src="/Images/lambda0/000526.png" width="240" />
+  
+  <img src="/Images/pn128_lr001/pn_128_1_gt.png" width="240" />
+  <img src="/Images/pn128_lr001/pn_128_1.png" width="240" />
+  <img src="/Images/pn128_lr001/pn_128_11.png" width="240" />
+</p>
+
+
+<p float="left">
+  <img src="/Images/lambda0/000509.png" width="240" />
+  <img src="/Images/pn128_lr001/pn_128_2_gt.png" width="240" />
+  <img src="/Images/pn128_lr001/pn_128_2.png" width="240" />
+  <img src="/Images/pn128_lr001/pn_128_22.png" width="240" />
+</p>
+
+
+
+<p float="left">
+  <img src="/Images/lambda0/000518.png" width="240" />
+  <img src="/Images/pn128_lr001/pn_128_3_gt.png" width="240" />
+  <img src="/Images/pn128_lr001/pn_128_33.png" width="240" />
+  <img src="/Images/pn128_lr001/pn_128_3.png" width="240" />
+</p>
+
+
+
