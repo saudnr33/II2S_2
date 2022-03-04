@@ -78,3 +78,20 @@ Inverting a random image using the LPIPS loss and Pn Loss!
 ---
 ### What can we try?
 
+---
+
+
+<p float="left">
+  <img src="/Images/lambda0/pn_0_1.png" width="240" />
+  <img src="/Images/lambda0/pn_0_11.png" width="240" />
+</p>
+
+<p float="left">
+  <img src="/Images/lambda0/pn_0_2.png" width="240" />
+  <img src="/Images/lambda0/pn_0_22.png" width="240" />
+</p>
+
+<p float="left">
+  <img src="/Images/lambda0/pn_0_3.png" width="240" />
+  <img src="/Images/lambda0/pn_0_33.png" width="240" />
+</p>
