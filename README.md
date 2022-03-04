@@ -172,3 +172,30 @@ Images below show Ground Truth, Reconstructed Image, Expression Change, and Age 
 </p>
 
 
+---
+
+<p float="left">
+  <img src="/Images/lambda0/000526.png" width="240" />
+  <img src="/Images/ex0/ex_recon.png" width="240" />
+  <img src="/Images/ex0/ex_exp.png" width="240" />
+  <img src="/Images/ex0/ex_age.png" width="240" />
+</p>
+
+
+<p float="left">
+  <img src="/Images/lambda0/000509.png" width="240" />
+  <img src="/Images/ex0/ex2_recon.png" width="240" />
+  <img src="/Images/ex0/ex2_exp.png" width="240" />
+  <img src="/Images/ex0/ex2_age.png" width="240" />
+</p>
+
+
+
+<p float="left">
+  <img src="/Images/lambda0/000518.png" width="240" />
+  <img src="/Images/ex0/ex3_recon.png" width="240" />
+  <img src="/Images/ex0/exp3_exp.png" width="240" />
+  <img src="/Images/ex0/ex3_age.png" width="240" />
+</p>
+
+
