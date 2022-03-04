@@ -139,5 +139,36 @@ Images below show Ground Truth, Reconstructed Image, Expressin Change, and Age C
   <img src="/Images/pn128_lr001/pn_128_3.png" width="240" />
 </p>
 
+---
+2000 iteration. lr = 0.1 and decreases by a factor of 0.8 every 200 iteration.  
+lambda = 0.001 and increases by a factor of 1.15 every 100 iteration.
+Number of components is set to 128 instead of 512. 
+Every other hyperparamter should follow II2S implementation.
+Images below show Ground Truth, Reconstructed Image, Expressin Change, and Age Change (Respectively).
+
+<p float="left">
+  <img src="/Images/lambda0/000526.png" width="240" />
+  
+  <img src="/Images/pn_128_lr01/pn_1_1.png" width="240" />
+  <img src="/Images/pn_128_lr01/pn_1_11.png" width="240" />
+  <img src="/Images/pn_128_lr01/pn_1_111.png" width="240" />
+</p>
+
+
+<p float="left">
+  <img src="/Images/lambda0/000509.png" width="240" />
+  <img src="/Images/pn_128_lr01/pn_1_2_r.png" width="240" />
+  <img src="/Images/pn_128_lr01/pn_1_22.png" width="240" />
+  <img src="/Images/pn_128_lr01/pn_1_2.png" width="240" />
+</p>
+
+
+
+<p float="left">
+  <img src="/Images/lambda0/000518.png" width="240" />
+  <img src="/Images/pn_128_lr01/pn_1_3_r.png" width="240" />
+  <img src="/Images/pn_128_lr01/pn_1_3.png" width="240" />
+  <img src="/Images/pn_128_lr01/pn_1_33.png" width="240" />
+</p>
 
 
