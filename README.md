@@ -140,8 +140,8 @@ Images below show Ground Truth, Reconstructed Image, Expression Change, and Age 
 </p>
 
 ---
-2000 iteration. lr = 0.1 and decreases by a factor of 0.8 every 200 iteration.  
-lambda = 0.001 and increases by a factor of 1.15 every 100 iteration.
+2000 iteration. lr = 0.01 and decreases by a factor of 0.8 every 200 iteration.  
+lambda = 0.01 and increases by a factor of 1.15 every 100 iteration.
 Number of components is set to 128 instead of 512. 
 Every other hyperparamter should follow II2S implementation.
 Images below show Ground Truth, Reconstructed Image, Expression Change, and Age Change (Respectively).
