@@ -230,3 +230,38 @@ Images below show Ground Truth, Reconstructed Image, Expression Change, and Age 
   <img src="/Images/ex01/e3_age.png" width="240" />
 </p>
 
+
+---
+2000 iteration. lr = 0.01 and decreases by a factor of 0.8 every 200 iteration.  
+lambda = 0.1 and increases by a factor of 1.15 every 100 iteration.
+Number of components is set to 64 instead of 512. 
+Every other hyperparamter should follow II2S implementation.
+Images below show Ground Truth, Reconstructed Image, Expression Change, and Age Change (Respectively).
+
+<p float="left">
+  <img src="/Images/ex0/2.png" width="240" />
+  <img src="/Images/ex64/ee1_recon.png" width="240" />
+  <img src="/Images/ex64/ee1_exp.png" width="240" />
+  <img src="/Images/ex64/ee1_age.png" width="240" />
+</p>
+
+
+
+<p float="left">
+  <img src="/Images/ex0/3.png" width="240" />
+  <img src="/Images/ex64/ee2_recon.png" width="240" />
+  <img src="/Images/ex64/ee2_exp.png" width="240" />
+  <img src="/Images/ex64/ee2_age.png" width="240" />
+</p>
+
+
+<p float="left">
+  <img src="/Images/ex0/0.png" width="240" />
+  <img src="/Images/ex64/ee3_recon.png" width="240" />
+  <img src="/Images/ex64/ee3_exp.png" width="240" />
+  <img src="/Images/ex64/ee3_age.png" width="240" />
+</p>
+
+
+
+
