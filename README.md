@@ -76,10 +76,12 @@ Inverting a random image using the LPIPS loss and Pn Loss!
 
 * They also use locality regularization to make the tuning effects localized and keep the StyleGAN latent space semantically editable. 
 ---
-### What can we try?
 
----
-In our experiments we noticed that I2S2 with the Pn regularization loss struggles to get editable images when the image resolution is increased to 1024x1024. Other than obvious perceptual loss reason, we believe that slight change in the hyperparameters lead to uncosistent results. We tried to investigating different initialization techniques and to set different hyperparameters. We have noticed that changing the number of components in the PCA transformation gave us a better control on convergence which resulted in stable results. Below, we summarized the results of our experiments.  
+
+# Editability Evaluation:
+
+
+In our experiments, we noticed that I2S2 with the Pn regularization loss struggles to get editable images when the image resolution is increased to 1024x1024. Other than obvious perceptual loss reason, we believe that changing hyperparameters slightly led to inconsistent results. We tried to investigate different initialization techniques and different hyperparameters. We have noticed that changing the number of components in the PCA transformation gave us better control over convergence, which resulted in more stable results. Below, we summarized the results of our experiments.  
 
 
 **Images below show Ground Truth, Reconstructed Image, Expression Change, and Age Change (Respectively). 
@@ -293,7 +295,7 @@ lambda = 0. Images below show Ground Truth, Reconstructed Image, Expressin Chang
 
 
 ---
-
+# Reconstruction Evaluation:
 
 | Cases      | LPIPS | MSE     | MSSSIM |
 | :---:       |    :----:   |         :---: |     :---: |
