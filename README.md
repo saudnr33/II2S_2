@@ -79,8 +79,18 @@ Inverting a random image using the LPIPS loss and Pn Loss!
 ### What can we try?
 
 ---
-1300 iteration. lr = 0.01. 
-lambda = 0. Images below show Ground Truth, Reconstructed Image, Expressin Change, and Age Change (Respectively). 
+In our experiments we noticed that I2S2 with the Pn regularization loss struggles to get editable images when the image resolution is increased to 1024x1024. Other than obvious perceptual loss reason, we believe that slight change in the hyperparameters lead to uncosistent results. We tried to investigating different initialization techniques and to set different hyperparameters. We have noticed that changing the number of components in the PCA transformation gave us a better control on convergence which resulted in stable results. Below, we summarized the results of our experiments.  
+
+
+**Images below show Ground Truth, Reconstructed Image, Expression Change, and Age Change (Respectively). 
+Lambda refers to the Pn loss coefficient.**
+
+
+## Images taken from StyleGan domain. 
+
+* Iteration = 1300. 
+* lr = 0.01. 
+* lambda = 0. 
 
  
 <p float="left">
@@ -108,11 +118,14 @@ lambda = 0. Images below show Ground Truth, Reconstructed Image, Expressin Chang
 </p>
 
 ---
-2000 iteration. lr = 0.01 and decreases by a factor of 0.8 every 200 iteration.  
-lambda = 0.001 and increases by a factor of 1.15 every 100 iteration.
-Number of components is set to 128 instead of 512. 
-Every other hyperparamter should follow II2S implementation.
-Images below show Ground Truth, Reconstructed Image, Expression Change, and Age Change (Respectively).
+
+* Iteration = 2000. 
+* lr = 0.01 and decreases by a factor of 0.8 every 200 iteration.
+* Number of Components = 128 (Instead of 512).
+* lambda = 0.001 and increases by a factor of 1.15 every 100 iteration.  
+* Every other hyperparamter should follow II2S implementation.
+
+
 
 <p float="left">
   <img src="/Images/lambda0/000526.png" width="240" />
@@ -140,11 +153,13 @@ Images below show Ground Truth, Reconstructed Image, Expression Change, and Age 
 </p>
 
 ---
-2000 iteration. lr = 0.01 and decreases by a factor of 0.8 every 200 iteration.  
-lambda = 0.01 and increases by a factor of 1.15 every 100 iteration.
-Number of components is set to 128 instead of 512. 
-Every other hyperparamter should follow II2S implementation.
-Images below show Ground Truth, Reconstructed Image, Expression Change, and Age Change (Respectively).
+
+* Iteration = 2000. 
+* lr = 0.01 and decreases by a factor of 0.8 every 200 iteration.
+* Number of Components = 128 (Instead of 512).
+* lambda = 0.01 and increases by a factor of 1.15 every 100 iteration.
+* Every other hyperparamter should follow II2S implementation.
+
 
 <p float="left">
   <img src="/Images/lambda0/000526.png" width="240" />
@@ -173,8 +188,17 @@ Images below show Ground Truth, Reconstructed Image, Expression Change, and Age 
 
 
 ---
+
+## Out of Domain Images
+
 1300 iteration. lr = 0.01. 
 lambda = 0. Images below show Ground Truth, Reconstructed Image, Expressin Change, and Age Change (Respectively). 
+
+* Iteration = 1300. 
+* lr = 0.01.
+* lambda = 0.0.  
+* Every other hyperparamter should follow II2S implementation.
+
 
 <p float="left">
   <img src="/Images/ex0/2.png" width="240" />
@@ -201,11 +225,13 @@ lambda = 0. Images below show Ground Truth, Reconstructed Image, Expressin Chang
 </p>
 
 ---
-2000 iteration. lr = 0.01 and decreases by a factor of 0.8 every 200 iteration.  
-lambda = 0.001 and increases by a factor of 1.15 every 100 iteration.
-Number of components is set to 128 instead of 512. 
-Every other hyperparamter should follow II2S implementation.
-Images below show Ground Truth, Reconstructed Image, Expression Change, and Age Change (Respectively).
+
+* Iteration = 2000. 
+* lr = 0.01 and decreases by a factor of 0.8 every 200 iteration.
+* Number of Components = 128 (Instead of 512).
+* lambda = 0.001 and increases by a factor of 1.15 every 100 iteration.
+* Every other hyperparamter should follow II2S implementation.
+
 
 <p float="left">
   <img src="/Images/ex0/2.png" width="240" />
@@ -232,11 +258,13 @@ Images below show Ground Truth, Reconstructed Image, Expression Change, and Age 
 
 
 ---
-2000 iteration. lr = 0.01 and decreases by a factor of 0.8 every 200 iteration.  
-lambda = 0.1 and increases by a factor of 1.15 every 100 iteration.
-Number of components is set to 64 instead of 512. 
-Every other hyperparamter should follow II2S implementation.
-Images below show Ground Truth, Reconstructed Image, Expression Change, and Age Change (Respectively).
+
+* Iteration = 2000. 
+* lr = 0.01 and decreases by a factor of 0.8 every 200 iteration.
+* Number of Components = 128 (Instead of 512).
+* lambda = 0.001 and increases by a factor of 1.15 every 100 iteration.
+* Every other hyperparamter should follow II2S implementation.
+
 
 <p float="left">
   <img src="/Images/ex0/2.png" width="240" />
@@ -263,5 +291,16 @@ Images below show Ground Truth, Reconstructed Image, Expression Change, and Age 
 </p>
 
 
+
+---
+
+
+| Cases      | LPIPS | MSE     | MSSSIM |
+| :---:       |    :----:   |         :---: |     :---: |
+| lambda = 0.0       | 0.397       | 0.033  | 0.441   |
+|lambda = 0.001, #Components = 128| 0.398        | 0.034      | 0.461   |
+| lambda = 0.01, #Components = 128| 0.401        | 0.0035      | 0.466 |
+| lambda = 0.01, #Components = 64   | 0.398        | 0.033      |  0.460  |
+| lambda = 0.1, #Components = 64   | 0.399      | 0.034     | 0.463 |
 
 
